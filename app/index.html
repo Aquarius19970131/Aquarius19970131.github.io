@@ -1,83 +1,58 @@
 <!DOCTYPE html>
-<!--2017/07/14 Andy Song - A smart home interface for CPF web app -->
+<html>
 <head>
-
-<title>Smart Home</title>
-<link rel="stylesheet" type="text/css" href="./css/style.css">
-<meta charset="UTF-8">
+	<title>CPF-Coaster</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 <body>
-    <div class="wrap">
-        <button onclick="loop()" class="btn btn-danger btn-lg">開始</button>
-    </div>
-
-
+	<div id="title"> Light Sensing </div>
+	<br>
+	<div class="lightsenser">
+		<span>
+			<img src="img/light.png" alt="">;
+		</span>
+		<span id="lightA"></span>
+	</div>
+	<div class="lightsenser">
+		<span>
+			LED開關;
+		</span>
+		<span id="tf"></span>
+	</div>
+</body>
 
 <script>
-
-	
-
+	var light;
 	setup();
-	
-	var json = new Object();
-	
-	var tempValue;
-	var lightValue;
-	var elecValue;
-	var thief;
-	var COValue;
-	
-	var lighton = document.getElementById("lighton");
-	var lightoff = document.getElementById("lightoff");
-	
-	// 上排數值顯示
-	function loop() {
-			
-			// 光敏感測
-			lightValue = cpf.get("a0");
-			document.getElementById("lightValue").innerHTML = lightValue;
-			
-			// 切換光敏狀態
-			if (lightValue <= 50 ) {
-				lighton.addEventListener('touchstart', function(event) {
-				lighton.src= './images/light_on.png';
-				lightoff.src= './images/lightoff.png';
-				cpf.request('["digitalWrite", 2 , 1]');
-				});
-			}else {
-				lightoff.addEventListener('touchstart', function(event) {
-				ightoff.src= './images/light_off.png';
-				lighton.src= './images/lighton.png';
-				cpf.request('["digitalWrite", 2 , 0]');
-				});
-			}
-
-				// 設置loop間
-			setTimeout("loop()", 1000);
+	function setup() {
+		if (cpf) {
+			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode","digital", 7, "OUTPUT"]')
 		}
-	
+	}
+	function loop() {
+		if (cpf) {
+			light = cpf.get("a0");
+			document.getElementById("lightA").innerHTML = light;
+			console.log(light);
+			if (light < 500) {
+				cpf.request('["digitalWrite", 7, 1]');
+				document.getElementById("tf").innerHTML = "開";
+			}
+			else {
+				cpf.request('["digitalWrite", 7, 0]');
+				document.getElementById("tf").innerHTML = "關";
+			}
+		}
+		setTimeout(loop, 1000);
+	}
 	loop();
-	
-	// 風扇
+
 	function fan(value) {
 		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
 	}
 	
-	// LED開燈
-	
-	// LED關燈
-	
-	
-
-	// cpf setup
-	function setup(){
-		if(cpf)
-			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1, "INPUT"],["setPinMode", "analog", 2, "INPUT"],["setPinMode", "analog", 3, "INPUT"],["setPinMode", "digital", 2,"OUTPUT"],["setPinMode", "digital", 3,"PWM"],["setPinMode", "digital", 7,"INPUT"]');
-		
-	}
-
 </script>
-</body>
-</html>
 
+</html>
