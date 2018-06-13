@@ -8,102 +8,11 @@
 
 </head>
 <body>
-	<div id="content">
-		<center>
-			<div class="analog">
-				<div class="analog_img">
-					<img src="./images/temp.png" class="sensors">
-				</div>
-				<div class="analog_title">
-					<h2>Temperature</h2>
-				</div>
-				<hr>
-				<div class="analog_value" >
-					<img src="./images/nice.png" id="tempStatus" class="status" />
-					<span id="tempValue">32</span><font class="unit">℃</font>
-				</div>
-			</div>
-			<div class="analog">
-				<div class="analog_img">
-					<img src="./images/light.png" class="sensors" style="width: 35%;">
-				</div>
-				<div class="analog_title">
-					<h2>Brightness</h2>
-				</div>
-				<hr>
-				<div class="analog_value">
-				<img src="./images/nice.png" id="lightStatus" class="status" />
-					<span id="lightValue">567</span>
-				</div>
-			</div>
-			<div class="analog">
-				<div class="analog_img">
-					<img src="./images/elec.png" class="sensors">
-				</div>
-				<div class="analog_title">
-					<h2>Electricity</h2>
-				</div>
-				<hr>
-				<div class="analog_value">
-				<img src="./images/warn.png" id="elecStatus" class="status" />
-					<span id="elecValue">390</span><font class="unit">mA</font>
-				</div>
-			</div>
-			<div class="analog">
-				<div class="analog_img">
-					<img src="./images/thief.png" style="width: 60%; top: 18%" class="sensors">
-				</div>
-				<div class="analog_title">
-					<h2>Thief</h2>
-				</div>
-				<hr>
-				<div class="analog_value">
-					<img src="./images/thief_off.png" id="thief">
-				</div>
-			</div>
-			<div class="analog">
-				<div class="analog_img">
-					<img src="./images/co.png" class="sensors" style="width: 40%; top: 25%">
-				</div>
-				<div class="analog_title">
-					<h2>Carbon monoxide</h2>
-				</div>
-				<hr>
-				<div class="analog_value">
-					<img src="./images/danger.png" id="COStatus" class="status" />
-					<span id="COValue">20</span><font class="unit">PPM</font>
-				</div>
-			</div>
-			<p>
-			<div class="output">
-				<div class="output_title">
-					<h2 style="margin-top: 5px;">Fan</h2>
-				</div>
-				<hr style="margin-top: 0px;">
-				<div class="output_img">
-					<img src="./images/fan.png" class="sensors" style="width: 55%; top: 5%;">
-				</div>
-				<div class="output_content">
-					<input Onchange="fan(this.value);" type="range" id="fan" style="margin-top: 25%;" value="0" min="0" max="255">
-				</div>
-			</div>
-			<div class="output">
-				<div class="output_title">
-					<h2 style="margin-top: 5px;">Lighting</h2>
-				</div>
-				<hr style="margin-top: 0px;">
-				<div class="output_img">
-					<img src="./images/bulb.png" id="bulb" class="sensors" style="width: 30%; top: 5%;">
-				</div>
-				<div class="output_content">
-					<img src="./images/lighton.png" class="lighting" id="lighton">
-					<img src="./images/light_off.png" class="lighting" id="lightoff">
-				</div>
-			</div>
-		</center>
-	</div>
+    <div class="wrap">
+        <button onclick="loop()" class="btn btn-danger btn-lg">開始</button>
+    </div>
 
-</body>
+
 
 <script>
 
@@ -169,6 +78,6 @@
 	}
 
 </script>
-
+</body>
 </html>
 
