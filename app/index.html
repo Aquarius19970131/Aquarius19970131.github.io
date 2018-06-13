@@ -9,42 +9,12 @@
 </head>
 <body>
 
-<div id="content">
-	<center>
-		
-
-			<hr>
-			<div class="analog_value">
-				<img src="./images/danger.png" id="COStatus" class="status" />
-				<span id="COValue">20</span><font class="unit">PPM</font>
-			</div>
-		</div>
-		<p>
-		<div class="output">
-			<div class="output_title">
-				<h2 style="margin-top: 5px;">Fan</h2>
-			</div>
-			<hr style="margin-top: 0px;">
-			<div class="output_img">
-				<img src="./images/fan.png" class="sensors" style="width: 55%; top: 5%;">
-			</div>
-			<div class="output_content">
-				<input Onchange="fan(this.value);" type="range" id="fan" style="margin-top: 25%;" value="0" min="0" max="255">
-			</div>
-		</div>
-
-			</div>
-		</div>
-	</center>
-</div>
 
 </body>
 
 <script>
 
-	/*if (window.Worker) {
-		var worker = new Worker("worker.js");
-	}*/
+	
 
 	setup();
 	
@@ -68,14 +38,22 @@
 			
 			// 切換光敏狀態
 			if (lightValue <= 50 ) {
-				document.getElementById("lightStatus").src= './images/warn.png';
+				lighton.addEventListener('touchstart', function(event) {
+				lighton.src= './images/light_on.png';
+				lightoff.src= './images/lightoff.png';
+				cpf.request('["digitalWrite", 2 , 1]');
+				});
 			}else {
-				document.getElementById("lightStatus").src= './images/nice.png';
+				lightoff.addEventListener('touchstart', function(event) {
+				ightoff.src= './images/light_off.png';
+				lighton.src= './images/lighton.png';
+				cpf.request('["digitalWrite", 2 , 0]');
+				});
 			}
-			
-		// 設置loop間
-		setTimeout("loop()", 1000);
-	}
+
+				// 設置loop間
+			setTimeout("loop()", 1000);
+		}
 	
 	loop();
 	
@@ -85,17 +63,9 @@
 	}
 	
 	// LED開燈
-	lighton.addEventListener('touchstart', function(event) {
-		lighton.src= './images/light_on.png';
-		lightoff.src= './images/lightoff.png';
-		cpf.request('["digitalWrite", 2 , 1]');
-	});
+	
 	// LED關燈
-	lightoff.addEventListener('touchstart', function(event) {
-		lightoff.src= './images/light_off.png';
-		lighton.src= './images/lighton.png';
-		cpf.request('["digitalWrite", 2 , 0]');
-	});
+	
 	
 
 	// cpf setup
