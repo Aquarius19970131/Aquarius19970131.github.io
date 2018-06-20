@@ -39,13 +39,13 @@
 			if (light < 500) {
 				cpf.request('["digitalWrite", 7, 1]');
 				cpf.request('["digitalWrite", 3]');
-				fanControl(255)
+				fanControl(255);
 				document.getElementById("tf").innerHTML = "開";
 			}
 			else {
 				cpf.request('["digitalWrite", 7, 0]');
-				cpf.request('["digitalWrite", .]');
-				fanControl(0)
+				cpf.request('["digitalWrite", 3]');
+				fanControl(0);
 				document.getElementById("tf").innerHTML = "關";
 			}
 		}
