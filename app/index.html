@@ -28,7 +28,7 @@
 	setup();
 	function setup() {
 		if (cpf) {
-			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode","digital", 7, "OUTPUT"]')
+			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode","digital", 7, "OUTPUT"],["setPinMode","digital", 3, "OUTPUT"]')
 		}
 	}
 	function loop() {
@@ -38,15 +38,23 @@
 			console.log(light);
 			if (light < 500) {
 				cpf.request('["digitalWrite", 7, 1]');
+				cpf.request('["digitalWrite", 3]');
+				fanControl(255)
 				document.getElementById("tf").innerHTML = "開";
 			}
 			else {
 				cpf.request('["digitalWrite", 7, 0]');
+				cpf.request('["digitalWrite", .]');
+				fanControl(0)
 				document.getElementById("tf").innerHTML = "關";
 			}
 		}
 		setTimeout(loop, 1000);
 	}
+	function fanControl(speed){
+  	cpf.set("socket d3", speed);
+	}
+
 	loop();
 </script>
 
