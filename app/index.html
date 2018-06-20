@@ -28,7 +28,7 @@
 	setup();
 	function setup() {
 		if (cpf) {
-			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode","digital", 7, "OUTPUT"],["setPinMode", "digital", 3, "PWM"],["grove_newChainableLED",6, 7, 1]');
+			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode","digital", 1, "OUTPUT"],["setPinMode", "digital", 3, "PWM"],["grove_newChainableLED",7, 8, 1]');
 		}
 	}
 	function loop() {
@@ -37,7 +37,7 @@
 			document.getElementById("lightA").innerHTML = light;
 			console.log(light);
 			if (light < 500) {
-				cpf.request('["digitalWrite", 7, 1]');
+				cpf.request('["digitalWrite", 1, 1]');
 				cpf.request('["grove_setColorRGB", 0, 255, 255, 255]');
 				cpf.request('["analogWrite", 3, 255]');
 				
@@ -45,7 +45,7 @@
 				document.getElementById("tf").innerHTML = "開";
 			}
 			else {
-				cpf.request('["digitalWrite", 7, 0]');
+				cpf.request('["digitalWrite", 1, 0]');
 				cpf.request('["analogWrite", 3, 0]');
 				document.getElementById("tf").innerHTML = "關";
 			}
