@@ -28,7 +28,7 @@
 	setup();
 	function setup() {
 		if (cpf) {
-			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode","digital", 7, "OUTPUT"],["setPinMode", "digital", 3, "PWM"]');
+			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode","digital", 7, "OUTPUT"],["setPinMode", "digital", 3, "PWM"],["grove_newChainableLED",7, 8, 1]');
 		}
 	}
 	function loop() {
@@ -38,7 +38,9 @@
 			console.log(light);
 			if (light < 500) {
 				cpf.request('["digitalWrite", 7, 1]');
+				cpf.request('["grove_setColorRGB", 0, 255, 255, 255]');
 				cpf.request('["analogWrite", 3, 255]');
+				
 				console.log("11");
 				document.getElementById("tf").innerHTML = "開";
 			}
