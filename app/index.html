@@ -41,9 +41,7 @@
 				cpf.request('["analogWrite", 3, 255]');
 				console.log("11");
 				document.getElementById("tf").innerHTML = "開";
-				if(setTimeout(loop,10000)){
-					cpf.request('["analogWrite", 3, 0]');
-				}
+			
 			}
 			else {
 				cpf.request('["digitalWrite", 2, 0]');
