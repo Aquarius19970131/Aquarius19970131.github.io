@@ -38,19 +38,19 @@
 			console.log(light);
 			if (light < 500) {
 				cpf.request('["digitalWrite", 2, 0]');
-				fan(0,0)
+				fan(0,0);
 				document.getElementById("tf").innerHTML = "關";
 				console.log("11");
 			}
 			else {
 				cpf.request('["digitalWrite", 2, 1]');
-				fan(255,10000)
+				fan(255,10000);
 				document.getElementById("tf").innerHTML = "開";
 			}
 			setTimeout(loop,12000);
 		}
 	}
-	function fan(value,time) {
+	function fan(value) {
 		cpf.request('["analogWrite", 3, ' + value + ']');
 		if(time==10000){
 			delay(time);
