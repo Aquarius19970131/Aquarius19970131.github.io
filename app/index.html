@@ -50,7 +50,7 @@
 			setTimeout(loop,12000);
 		}
 	}
-	function fan(value) {
+	function fan(value,time) {
 		cpf.request('["analogWrite", 3, ' + value + ']');
 		if(time==10000){
 			delay(time);
