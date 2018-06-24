@@ -37,19 +37,20 @@
 			document.getElementById("lightA").innerHTML = light;
 			console.log(light);
 			if (light < 500) {
-				cpf.request('["digitalWrite", 2, 1]');
-				cpf.request('["analogWrite", 3, 255]');
-				console.log("11");
-				document.getElementById("tf").innerHTML = "開";
-			
-			}
-			else {
 				cpf.request('["digitalWrite", 2, 0]');
 				cpf.request('["analogWrite", 3, 0]');
 				document.getElementById("tf").innerHTML = "關";
+				console.log("11");
+			}
+			else {
+				cpf.request('["digitalWrite", 2, 1]');
+				cpf.request('["analogWrite", 3, 255]');
+				document.getElementById("tf").innerHTML = "開";
+				delay(10000);
+				cpf.request('["analogWrite", 3, 0]');
 			}
 		}
-		setTimeout(loop,1000);
+		setTimeout(loop,2000);
 	}
 	loop();
 </script>
