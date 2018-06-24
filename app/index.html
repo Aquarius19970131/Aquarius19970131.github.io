@@ -26,7 +26,6 @@
 <script>
 	var light;
 	setup();
-	loop();
 	function setup() {
 		if (cpf) {
 			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode","digital", 2, "OUTPUT"],["setPinMode", "digital", 3, "PWM"]');
@@ -47,13 +46,11 @@
 				cpf.request('["digitalWrite", 2, 1]');
 				cpf.request('["analogWrite", 3, 255]');
 				document.getElementById("tf").innerHTML = "開";
-				
 			}
 			setTimeout(loop,1000);
 		}
-	
 	}
-
+	loop();
 </script>
 
 </html>
