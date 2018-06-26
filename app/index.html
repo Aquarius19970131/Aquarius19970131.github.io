@@ -38,8 +38,8 @@
 			console.log(light);
 			setTimeout(function(){
 				if (light < 500) {
-				cpf.request('["digitalWrite", 2, 10]');
-				cpf.request('["analogWrite", 3, 0]');
+				cpf.request('["digitalWrite", 2, 0]');
+				cpf.request('["analogWrite", 3, 10]');
 				document.getElementById("tf").innerHTML = "關";
 				console.log("11");
 			}
